@@ -5,3 +5,13 @@ export const NAV_ITEMS = [
   { name: "Marketplace", link: "#marketplace" },
   { name: "More", link: "#more" },
 ];
+
+
+export const EXPLORE_ITEMS = [
+  {
+    text: "Play with your own cute & adorable girls whose in charge of saving NANOSPACE world.",
+  },
+  {
+    text: "Characters are fully customizable with various costumes, attractive gears and powerful weapons.",
+  },
+];

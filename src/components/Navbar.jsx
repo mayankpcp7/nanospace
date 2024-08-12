@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NAV_ITEMS } from "../utils/helper";
-// import navlogo from "../../public/assets/images/webp/nav-logo.webp"
+import navlogo from "../assets/images/webp/nav-logo.webp";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-900 p-4">
+    <nav className="bg-white bg-opacity-5 backdrop-blur-[20px]">
       <div className="container mx-auto flex items-center justify-between">
         <div className="text-white font-bold text-xl">
-          <Link href="#">
-            {/* <img src={navlogo} alt="Logo" className="" /> */}
-            NANOSPACE
+          <Link to="#">
+            <img className="max-w-[154px] w-full" src={navlogo} alt="Logo" />
           </Link>
         </div>
 
@@ -24,9 +24,9 @@ const Navbar = () => {
           {NAV_ITEMS.map((item, index) => (
             <li
               key={index}
-              className="text-gray-400 hover:text-white py-2 md:py-0"
+              className=" bg-transparent py-7 px-4 !ms-0 hover:bg-off-gray bg-opacity-50 duration-300"
             >
-              <a className="font-" href={item.link}>{item.name}</a>
+              <Link className="font-saira text-white font-normal text-base" to={item.link}>{item.name}</Link>
             </li>
           ))}
         </ul>
