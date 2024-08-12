@@ -8,15 +8,15 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Add or remove the class to prevent body scrolling when the mobile menu is open
+    
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = "auto"; // Clean up on unmount
+      document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
   return (
-    <nav className="bg-white relative z-50 bg-opacity-[6%] backdrop-blur-[16px]">
+    <nav className="bg-white relative z-[100] bg-opacity-[6%] backdrop-blur-[16px]">
       <div className="max-w-[1396px] px-4 mx-auto flex items-center justify-between">
         <Link to="#">
           <img
@@ -46,8 +46,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
-        {/* Toggle Button for Mobile */}
         <div className="lg:hidden">
           <button
             className="text-white relative z-[60]"
@@ -69,17 +67,14 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-
-        {/* Button at the End */}
         <div className="hidden lg:block">
-          <button className="bg-sky-blue flex items-center gap-2 rounded-full text-lg btn-text-shadow duration-300 text-white px-4 py-2 font-saira font-medium shadow-button-text hover:bg-blue-600">
+          <button className="bg-sky-blue flex items-center text-shadow max-w-[130px] gap-2 rounded-full text-lg btn-text-shadow duration-300 text-white ps-4 pe-3 whitespace-nowrap py-1.5 font-saira font-medium shadow-button-text hover:bg-blue-600">
             Find More
             <ButtonArrow className="mt-2 " />
           </button>
         </div>
       </div>
-
-      {/* Button in Mobile View */}
+      {/* MOBILE NAV */}
       <div
         className={`fixed top-0 left-0 w-full bg-custom-black transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -89,6 +84,7 @@ const Navbar = () => {
           <ul className="flex flex-col items-center">
             {NAV_ITEMS.map((item, index) => (
               <li
+                onClick={() => setIsOpen(!isOpen)}
                 key={index}
                 className="py-4 px-2 hover:bg-off-gray hover:bg-opacity-50 bg-opacity-50 duration-300"
               >
@@ -101,7 +97,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <button className="bg-sky-blue btn-text-shadow text-base duration-300 mt-8 flex items-center gap-2 rounded-full text-white px-4 py-2 hover:bg-blue-600">
+          <button className="bg-sky-blue text-shadow text-base duration-300 mt-8 flex items-center gap-2 rounded-full text-white px-4 py-2 hover:bg-blue-600">
             Find More
             <ButtonArrow className="mt-2 max-w-[10px]" />
           </button>

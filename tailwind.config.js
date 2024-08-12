@@ -23,6 +23,7 @@ module.exports = {
         "light-gray": "#3e3f40",
         "off-gray": "#dedede",
         "sky-blue": "#5893FF",
+        overlay: "rgba(33, 37, 41, 0.6)",
       },
       lineHeight: {
         120: "120%",
@@ -33,5 +34,15 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities(
+        {
+          ".text-shadow": {
+            "text-shadow": "0.5px 0.5px 2px 0px #00000040",
+          },
+        },
+      );
+    },
+  ],
 };
