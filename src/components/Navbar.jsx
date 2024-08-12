@@ -1,39 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NAV_ITEMS } from "../utils/helper";
 import navlogo from "../assets/images/webp/nav-logo.webp";
+import { ButtonArrow } from "./common/Icons";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    // Add or remove the class to prevent body scrolling when the mobile menu is open
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto"; // Clean up on unmount
+    };
+  }, [isOpen]);
+
   return (
-    <nav className="bg-white bg-opacity-5 backdrop-blur-[20px]">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-white font-bold text-xl">
-          <Link to="#">
-            <img className="max-w-[154px] w-full" src={navlogo} alt="Logo" />
-          </Link>
-        </div>
+    <nav className="bg-white relative z-50 bg-opacity-[6%] backdrop-blur-[16px]">
+      <div className="max-w-[1396px] px-4 mx-auto flex items-center justify-between">
+        <Link to="#">
+          <img
+            className="max-w-[120px] sm:max-w-[154px] my-4 z-[60] w-full"
+            src={navlogo}
+            alt="Logo"
+          />
+        </Link>
 
         {/* Navigation Links */}
         <ul
-          className={`flex-col md:flex md:flex-row md:space-x-8 items-center transition-transform duration-300 ease-in-out ${
+          className={`flex-col hidden lg:flex lg:flex-row lg:space-x-8 items-center transition-transform duration-300 ease-in-out ${
             isOpen ? "flex" : "hidden"
-          } md:flex`}
+          } lg:flex`}
         >
           {NAV_ITEMS.map((item, index) => (
             <li
               key={index}
-              className=" bg-transparent py-7 px-4 !ms-0 hover:bg-off-gray bg-opacity-50 duration-300"
+              className="bg-transparent py-7 px-4 !ms-0 hover:bg-off-gray hover:bg-opacity-50 bg-opacity-50 duration-300"
             >
-              <Link className="font-saira text-white font-normal text-base" to={item.link}>{item.name}</Link>
+              <Link
+                className="font-saira text-white font-normal text-base"
+                to={item.link}
+              >
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Toggle Button for Mobile */}
-        <div className="md:hidden">
-          <button className="text-white" onClick={() => setIsOpen(!isOpen)}>
+        <div className="lg:hidden">
+          <button
+            className="text-white relative z-[60]"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <svg
               className="w-6 h-6"
               fill="none"
@@ -52,21 +71,42 @@ const Navbar = () => {
         </div>
 
         {/* Button at the End */}
-        <div className="hidden md:block">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-            Find More &rarr;
+        <div className="hidden lg:block">
+          <button className="bg-sky-blue flex items-center gap-2 rounded-full text-lg btn-text-shadow duration-300 text-white px-4 py-2 font-saira font-medium shadow-button-text hover:bg-blue-600">
+            Find More
+            <ButtonArrow className="mt-2 " />
           </button>
         </div>
       </div>
 
       {/* Button in Mobile View */}
-      {isOpen && (
-        <div className="flex justify-center mt-4 md:hidden">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-            Find More &rarr;
+      <div
+        className={`fixed top-0 left-0 w-full bg-custom-black transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:hidden min-h-screen flex flex-col justify-center items-center`}
+      >
+        <div className="flex flex-col items-center w-full h-full py-4">
+          <ul className="flex flex-col items-center">
+            {NAV_ITEMS.map((item, index) => (
+              <li
+                key={index}
+                className="py-4 px-2 hover:bg-off-gray hover:bg-opacity-50 bg-opacity-50 duration-300"
+              >
+                <Link
+                  className="font-saira text-white font-normal text-base"
+                  to={item.link}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <button className="bg-sky-blue btn-text-shadow text-base duration-300 mt-8 flex items-center gap-2 rounded-full text-white px-4 py-2 hover:bg-blue-600">
+            Find More
+            <ButtonArrow className="mt-2 max-w-[10px]" />
           </button>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

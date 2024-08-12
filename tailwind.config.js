@@ -18,9 +18,11 @@ module.exports = {
         "custom-sm": "20px",
       },
       colors: {
+        "custom-black": "#111111",
         gray: "#CCCCCC",
         "light-gray": "#3e3f40",
         "off-gray": "#dedede",
+        "sky-blue": "#5893FF",
       },
       lineHeight: {
         120: "120%",

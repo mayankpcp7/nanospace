@@ -6,25 +6,25 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 const Hero = () => {
   return (
-    <div className="bg-hero center bg-cover flex flex-col 2xl:min-h-screen">
+    <div className="bg-hero relative center bg-cover flex flex-col 2xl:min-h-screen">
       <Navbar />
-      <div className="flex flex-col justify-center items-center flex-grow h-full">
-        <h1 className="font-orbitron font-bold mt-40 2xl:mt-0 2xl:pt-0  pt-5 text-white text-3xl max-w-[801px] text-center leading-120 mx-auto">
+      <div className="flex flex-col px-4 justify-center items-center flex-grow h-full">
+        <h1 className="font-orbitron font-bold mt-40 2xl:mt-0 2xl:pt-0  pt-5 text-white text-custom-md md:text-custom-lg lg:text-2xl xl:text-3xl max-w-[801px] text-center !leading-120 mx-auto">
           Save NANOSPACE World from Enemies
         </h1>
-        <p className="text-center pt-4 font-saira font-normal text-xl text-white leading-150">
+        <p className="text-center pt-4 font-saira font-normal text-base sm:text-lg md:text-xl text-white leading-150">
           Unleash ever - existing excitement with adorable girls armed with
           destructive gunfire.
         </p>
         <div className="flex gap-4 items-center mt-11 mb-64 2xl:mb-0">
           <Link href="https://discord.com">
-            <img className="max-w-[119px]" src={discord} alt="discord" />
+            <img className="max-w-[100px] duration-300 hover:scale-110 sm:max-w-[119px]" src={discord} alt="discord" />
           </Link>
           <Link href="https://appstore.com">
-            <img className="max-w-[119px]" src={appstore} alt="appstore" />
+            <img className="max-w-[100px] duration-300 hover:scale-110 sm:max-w-[119px]" src={appstore} alt="appstore" />
           </Link>
           <Link href="https://play.google.com">
-            <img className="max-w-[119px]" src={playstore} alt="playstore" />
+            <img className="max-w-[100px] duration-300 hover:scale-110 sm:max-w-[119px]" src={playstore} alt="playstore" />
           </Link>
         </div>
       </div>
