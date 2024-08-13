@@ -6,7 +6,7 @@ import { SOCIAL_MEDIA_LINKS } from "../utils/helper";
 import bottomLayer from "../assets/images/png/explore-top-layer.png";
 const Hero = () => {
   return (
-    <div className="bg-hero relative center bg-cover z-0 flex flex-col">
+    <div className="bg-hero relative center bg-cover z-[1000] flex flex-col">
       <img
         className="absolute z-40 bottom-0 start-0 w-full"
         src={bottomLayer}

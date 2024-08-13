@@ -1,6 +1,6 @@
-import discord from "../assets/images/png/discord.png";
-import appstore from "../assets/images/png/app-store.png";
-import playstore from "../assets/images/png/play-store.png";
+import discord from "../assets/images/webp/discord.webp";
+import appstore from "../assets/images/webp/app-store.webp";
+import playstore from "../assets/images/webp/play-store.webp";
 
 export const NAV_ITEMS = [
   { name: "Home", link: "#home" },
